@@ -21,17 +21,14 @@ public class RegisterServlet extends HttpServlet {
         int age = Integer.parseInt(ageStr);
 
         try {
-            // Load MySQL driver for JDBC
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            // Database connection (Update your DB URL, user, password)
             Connection con = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/login_app", // DB URL
                 "root", // DB user
                 "your_db_password" // DB password
             );
 
-            // Prepare insert statement
             String sql = "INSERT INTO users (name, gender, age, username, password, role) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, name);
@@ -57,3 +54,4 @@ public class RegisterServlet extends HttpServlet {
         }
     }
 }
+
